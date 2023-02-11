@@ -69,6 +69,7 @@ namespace Ranking_system
         void updateValues(int tRank) 
         {
             u.UpdateProgress(tRank);
+            label19.Text = $"+{u.getAddedProgress()}";
             updateLabels();
             progressBar1.Value = u.progress;
         }
@@ -134,6 +135,7 @@ namespace Ranking_system
             u.rank= -8;
             u.progress= 0;
             updateLabels();
+            label19.Text = string.Empty;
             progressBar1.Value = u.progress;
         }
     }

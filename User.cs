@@ -11,6 +11,7 @@ namespace Ranking_system
         public int[] Rank = { -8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8 };
         public int rank { get; set; }
         public int progress { get; set; }
+        int added = 0;
         public User() {
             rank = -8;
             progress = 0;
@@ -26,18 +27,21 @@ namespace Ranking_system
                 progress = 0;
             }
         }
-        public void UpdateProgress(int tRank) 
+        public void UpdateProgress(int tRank)
         {
             if (rank >= 8) progress = 0;
-            else if (tRank == rank) progress += 3;
-            else if(tRank == rank - 1) progress += 1;
-            else if(tRank > rank)
+            else if (tRank == rank) { added = 3; progress += added; }
+            else if (tRank == rank - 1) { added = 1; progress += added; }
+            else if (tRank > rank)
             {
-                
+
                 int d = tRank - rank;
                 if (rank == -1) --d;
-                progress += 10*d*d;
+                added = 10 * d * d;
+                progress += added;
+
             }
+            else added = 0;
             if(progress >= 100)
             {
                 while(progress >= 100) 
@@ -46,6 +50,11 @@ namespace Ranking_system
                     progress%=100;
                 }
             }
+        }
+
+        public int getAddedProgress()
+        {
+            return added;
         }
 
     }
