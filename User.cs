@@ -29,7 +29,7 @@ namespace Ranking_system
         }
         public void UpdateProgress(int tRank)
         {
-            if (rank >= 8) progress = 0;
+            if (rank >= 8) { added = 0; progress = added; }
             else if (tRank == rank) { added = 3; progress += added; }
             else if (tRank == rank - 1) { added = 1; progress += added; }
             else if (tRank > rank)

@@ -70,6 +70,9 @@ namespace Ranking_system
         {
             u.UpdateProgress(tRank);
             label19.Text = $"+{u.getAddedProgress()}";
+            timer1.Interval = 500;
+            timer1.Enabled = true;
+            timer1.Start();
             updateLabels();
             progressBar1.Value = u.progress;
         }
@@ -136,7 +139,14 @@ namespace Ranking_system
             u.progress= 0;
             updateLabels();
             label19.Text = string.Empty;
+            timer1.Stop();
             progressBar1.Value = u.progress;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label19.Text = string.Empty;
+            timer1.Stop();
         }
     }
 }
